@@ -7,4 +7,9 @@
     <RootNamespace>S2_L3</RootNamespace>
   </PropertyGroup>
 
+	<ItemGroup>
+		<Compile Include="Models/ViewModel/SaleViewModel.cs" />
+	</ItemGroup>
+
+
 </Project>

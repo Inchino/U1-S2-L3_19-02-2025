@@ -1,5 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using S2_L3.Models;
+using S2_L3.Models.ViewModel;
+using System.Collections.Generic;
 
 namespace S2_L3.Controllers
 {
@@ -7,12 +9,29 @@ namespace S2_L3.Controllers
     {
         public IActionResult Index()
         {
-            return View(DatiStatici.Sale);
+            ViewData["Title"] = "Cinema Multisala";
+
+            var model = new SaleViewModel
+            {
+                Sale = DatiStatici.Sale ?? new List<Sala>()
+            };
+
+            return View(model);
         }
 
         public IActionResult Prenotazioni()
         {
-            return View(DatiStatici.Biglietti);
+            ViewData["Title"] = "Prenotazioni Effettuate";
+            return View(GetPrenotazioniViewModel());
+        }
+
+        private PrenotazioniViewModel GetPrenotazioniViewModel()
+        {
+            return new PrenotazioniViewModel
+            {
+                Biglietti = DatiStatici.Biglietti ?? new List<Biglietto>(),
+                Sale = DatiStatici.Sale ?? new List<Sala>()
+            };
         }
     }
 }

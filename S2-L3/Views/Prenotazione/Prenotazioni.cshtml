@@ -1,30 +1,36 @@
-﻿@model List<S2_L3.Models.Biglietto>
+﻿@model S2_L3.Models.ViewModel.PrenotazioniViewModel
+
 @{
-    ViewData["Title"] = "Lista Prenotazioni";
+    ViewData["Title"] = "Prenotazioni Effettuate";
 }
 
-<h2 class="text-center">Lista delle Prenotazioni</h2>
+<h2>@ViewData["Title"]</h2>
 
-<div class="container mt-4">
-    <table class="table table-bordered">
+@if (Model?.Biglietti != null && Model.Biglietti.Any())
+{
+    <table class="table">
         <thead>
             <tr>
                 <th>Nome</th>
                 <th>Cognome</th>
                 <th>Sala</th>
-                <th>Tipo</th>
+                <th>Tipo Biglietto</th>
             </tr>
         </thead>
         <tbody>
-            @foreach (var biglietto in Model)
+            @foreach (var biglietto in Model.Biglietti)
             {
-                    <tr>
-                        <td>@biglietto.Nome</td>
-                        <td>@biglietto.Cognome</td>
-                        <td>@biglietto.Sala</td>
-                        <td>@biglietto.Tipo</td>
-                    </tr>
+                <tr>
+                    <td>@biglietto.Nome</td>
+                    <td>@biglietto.Cognome</td>
+                    <td>@biglietto.Sala</td>
+                    <td>@biglietto.Tipo</td>
+                </tr>
             }
         </tbody>
     </table>
-</div>
+}
+else
+{
+    <p class="text-muted">Nessuna prenotazione effettuata.</p>
+}
