@@ -1,0 +1,30 @@
+﻿@model List<S2_L3.Models.Biglietto>
+@{
+    ViewData["Title"] = "Lista Prenotazioni";
+}
+
+<h2 class="text-center">Lista delle Prenotazioni</h2>
+
+<div class="container mt-4">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Cognome</th>
+                <th>Sala</th>
+                <th>Tipo</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var biglietto in Model)
+            {
+                    <tr>
+                        <td>@biglietto.Nome</td>
+                        <td>@biglietto.Cognome</td>
+                        <td>@biglietto.Sala</td>
+                        <td>@biglietto.Tipo</td>
+                    </tr>
+            }
+        </tbody>
+    </table>
+</div>
