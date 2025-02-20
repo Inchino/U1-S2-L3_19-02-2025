@@ -21,10 +21,8 @@ namespace S2_L3.Models
         [Required(ErrorMessage = "La sala è obbligatoria.")]
         public string Sala { get; set; }
 
-        // Costruttore vuoto richiesto da ASP.NET Core
         public Biglietto() { }
 
-        // Costruttore con validazione dei dati
         public Biglietto(string nome, string cognome, string tipo, string sala)
         {
             Nome = !string.IsNullOrWhiteSpace(nome) ? nome : throw new ArgumentException("Il nome non può essere vuoto.");

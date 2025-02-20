@@ -6,7 +6,6 @@ namespace S2_L3.Models
 {
     public static class DatiStatici
     {
-        // Liste statiche con readonly per evitare sostituzioni accidentali
         public static readonly List<Sala> Sale = new List<Sala>
         {
             new Sala("SALA NORD"),
@@ -16,7 +15,6 @@ namespace S2_L3.Models
 
         public static readonly List<Biglietto> Biglietti = new List<Biglietto>();
 
-        // Trova una sala e lancia un'eccezione se non esiste
         public static Sala TrovaSala(string nome)
         {
             var sala = Sale.FirstOrDefault(s => s.Nome == nome);
@@ -27,7 +25,6 @@ namespace S2_L3.Models
             return sala;
         }
 
-        // Aggiunge un biglietto e restituisce true se l'operazione è riuscita
         public static bool AggiungiBiglietto(Biglietto biglietto)
         {
             if (biglietto == null)

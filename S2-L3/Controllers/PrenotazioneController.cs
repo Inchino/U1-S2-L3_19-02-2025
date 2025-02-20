@@ -11,24 +11,20 @@ namespace S2_L3.Controllers
         {
             try
             {
-                // Validazione campi obbligatori
                 if (string.IsNullOrEmpty(nome) || string.IsNullOrEmpty(cognome))
                 {
                     TempData["ErrorMessage"] = "Nome e cognome sono obbligatori.";
                     return RedirectToAction("Index", "Home");
                 }
 
-                // Validazione tipo biglietto
                 if (tipo != "Intero" && tipo != "Ridotto")
                 {
                     TempData["ErrorMessage"] = "Tipo di biglietto non valido. Deve essere 'Intero' o 'Ridotto'.";
                     return RedirectToAction("Index", "Home");
                 }
 
-                // Creazione biglietto
                 Biglietto biglietto = new Biglietto(nome, cognome, tipo, sala);
 
-                // Tentativo di aggiungere il biglietto
                 bool aggiunto = DatiStatici.AggiungiBiglietto(biglietto);
                 if (!aggiunto)
                 {
